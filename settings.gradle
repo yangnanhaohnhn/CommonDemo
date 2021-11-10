@@ -1,0 +1,19 @@
+//dependencyResolutionManagement {
+//    repositoriesMode.set(RepositoriesMode.FAIL_ON_PROJECT_REPOS)
+//    repositories {
+//        maven { url 'https://maven.aliyun.com/repository/public' }
+//        maven { url 'https://maven.aliyun.com/repository/google' }
+//        maven { url 'https://maven.aliyun.com/repository/gradle-plugin' }
+//        maven { url 'https://jitpack.io' }
+//        google()
+//        mavenCentral()
+//    }
+//}
+rootProject.name = "CommonDemo"
+include ':app'
+include ':lib:base'
+include ':component:net'
+include ':module:home'
+include ':component:bus'
+include ':lib:common'
+include ':component:choose'

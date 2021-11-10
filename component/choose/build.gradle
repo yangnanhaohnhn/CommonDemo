@@ -1,0 +1,15 @@
+apply plugin: 'com.android.library'
+apply from: "../../lib.build.gradle"
+/*序列化插件*/
+//独立插件
+apply plugin: 'kotlin-parcelize'
+android {
+}
+dependencies {
+    api deps.picture_selector
+//    //引入 RecycleView
+    api deps.base_recycler
+    //AOP
+    implementation deps.aspect
+    implementation deps.isoparser
+}

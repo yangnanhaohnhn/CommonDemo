@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="Custom_Cancel" parent="QMUI">
+        <item name="qmui_bottom_sheet_cancel_style">@style/Cancel</item>
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:windowBackground">@android:color/transparent</item>
+        <item name="android:backgroundDimAmount">0.6</item>
+    </style>
+
+    <style name="Cancel">
+        <item name="android:textColor">@android:color/holo_red_dark</item>
+    </style>
+</resources>

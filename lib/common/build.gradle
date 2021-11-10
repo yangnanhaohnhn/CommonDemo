@@ -1,0 +1,23 @@
+apply plugin: 'com.android.library'
+//此处路径使用 ../ 上一级的方式，是因为每个真正的 build是在子文件夹下真正的进行 build的，所以此处应该考虑为真正 build的相对路径
+apply from: "../../base.build.gradle"
+
+android {
+}
+
+dependencies {
+    implementation deps.toasty
+    api deps.arouter
+    implementation deps.mmkv
+
+    implementation deps.gson
+    //显示照片
+    api deps.kotlin_coil
+    implementation deps.kotlin_coil_gif
+
+    //引入QMUI
+    api deps.qmui_legacy
+    api deps.qmui
+    api deps.qmui_arch
+    kapt deps.qmui_arch_compiler
+}

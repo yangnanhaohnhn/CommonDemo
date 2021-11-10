@@ -1,0 +1,16 @@
+component:choose:
+    1)选择文件：照片、视频、音频
+
+
+
+component:bus:
+    1.发送消息
+         LiveEventBus.get(key).post(value)
+    2.注册
+         LiveEventBus.get(key).observe(this, object : Observer<Any>(){})
+         LiveEventBus.get("key",String.class).observe(this, new Observer<String>() {
+             @Override
+             public void onChanged(@Nullable String s) {
+                 Log.i(TAG,s);
+             }
+         });

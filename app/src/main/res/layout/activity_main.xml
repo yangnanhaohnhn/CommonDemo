@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:binding="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="mainVm"
+            type="com.example.commondemo.MainVm" />
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        tools:context=".MainActivity">
+
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="登录"
+            binding:onClickCommand="@{mainVm.loginOp}" />
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="跳转"
+            binding:onClickCommand="@{mainVm.startActivityOp}" />
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="选择图片"
+            binding:onClickCommand="@{mainVm.chooseImg}" />
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="选择视频"
+            binding:onClickCommand="@{mainVm.chooseVideo}" />
+
+        <com.sinfotek.component.choose.file.ImgRecycleView
+            android:id="@+id/irv_file"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="80dp"
+            android:orientation="horizontal">
+            <ImageView
+                android:id="@+id/iv1"
+                android:layout_width="80dp"
+                android:layout_height="match_parent"/>
+            <ImageView
+                android:id="@+id/iv2"
+                android:layout_width="80dp"
+                android:layout_height="match_parent"/>
+            <ImageView
+                android:id="@+id/iv3"
+                android:layout_width="80dp"
+                android:layout_height="match_parent"/>
+            <ImageView
+                android:id="@+id/iv4"
+                android:layout_width="80dp"
+                android:layout_height="match_parent"/>
+
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="100dp"
+            android:orientation="horizontal">
+            <ImageView
+                android:id="@+id/iv5"
+                android:layout_width="100dp"
+                android:layout_height="match_parent"/>
+            <ImageView
+                android:id="@+id/iv11"
+                android:layout_width="100dp"
+                android:layout_height="match_parent"/>
+            <ImageView
+                android:id="@+id/iv21"
+                android:layout_width="100dp"
+                android:layout_height="match_parent"/>
+        </LinearLayout>
+    </LinearLayout>
+
+
+</layout>

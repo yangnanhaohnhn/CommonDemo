@@ -1,0 +1,31 @@
+apply plugin: 'com.android.application'
+apply from: "../base.build.gradle"
+
+android {
+    defaultConfig {
+        applicationId "com.example.commondemo"
+        multiDexEnabled true
+    }
+    //开启DataBinding
+    buildFeatures{
+        dataBinding = true
+    }
+    //避免编译不能用于在编译类路径中发现的注解处理器，因为它们中的任何更改都需要运行注解处理任务
+    kapt.includeCompileClasspath = false
+}
+
+//配置ARouter
+kapt {
+    arguments {
+        arg("AROUTER_MODULE_NAME", project.getName())
+    }
+}
+
+dependencies {
+    implementation project("path":":module:home")
+    if (isModule.toBoolean()) {
+        implementation project("path":":lib:base")
+    }
+    //引入ARouter
+    kapt deps.arouter_compiler
+}

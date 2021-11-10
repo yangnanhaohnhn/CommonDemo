@@ -1,0 +1,22 @@
+apply plugin: 'com.android.library'
+apply from: "../../lib.build.gradle"
+
+android {
+
+}
+
+dependencies {
+
+    api deps.stetho
+    api deps.stetho_okhttp3
+
+    api deps.okhttp3
+    api deps.okhttp3_logging
+    api deps.retrofit
+    api deps.retrofit_converter_gson
+    api deps.retrofit_converter_moshi
+    api deps.retrofit_coroutines
+
+    api deps.moshi_kotlin
+    kapt deps.moshi_kotlin_codegen
+}

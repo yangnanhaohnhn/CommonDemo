@@ -1,0 +1,17 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <!-- Base application theme. -->
+    <style name="Theme.CommonDemo" parent="QMUI.Compat.NoActionBar">
+        <!-- Primary brand color. -->
+        <item name="colorPrimary">@color/purple_500</item>
+        <item name="colorPrimaryDark">@color/purple_700</item>
+        <item name="colorAccent">@color/teal_200</item>
+        <!-- Customize your theme here. -->
+
+<!--        全局配置-->
+        <item name="qmui_bottom_sheet_cancel_style">@style/Bottom_Sheet_Cancel</item>
+    </style>
+
+    <style name="Bottom_Sheet_Cancel" parent="QMUI.BottomSheet.Cancel">
+        <item name="android:textColor">@android:color/holo_red_dark</item>
+    </style>
+</resources>

@@ -1,0 +1,10 @@
+apply plugin: 'com.android.library'
+apply from: "../../lib.build.gradle"
+
+android {
+}
+
+dependencies {
+    //引入事件总线
+    api deps.live_event_bus
+}

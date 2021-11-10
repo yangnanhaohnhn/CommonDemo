@@ -1,0 +1,21 @@
+apply plugin: 'com.android.library'
+apply from: "../../lib.build.gradle"
+android{
+    //开启DataBing
+    buildFeatures{
+        dataBinding = true
+    }
+}
+
+dependencies {
+    //引入AutoSize
+    api deps.autosize
+
+    //引入Lifecycle
+    api deps.lifecyle_vm
+    api deps.lifecyle_livedata
+    api deps.lifecyle_common_java8
+    api deps.lifecycle_runtime
+//    api deps.lifecycle_fragment
+
+}
