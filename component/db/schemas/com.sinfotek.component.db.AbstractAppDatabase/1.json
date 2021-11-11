@@ -1,0 +1,114 @@
+{
+  "formatVersion": 1,
+  "database": {
+    "version": 1,
+    "identityHash": "761eea429526aa5fe2912635a6d571a7",
+    "entities": [
+      {
+        "tableName": "tb_data_file",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`dataFileSign` TEXT NOT NULL, `fileType` INTEGER NOT NULL, `filePath` TEXT NOT NULL, `dataFileId` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `fileOtherInfo` TEXT NOT NULL, `foreignKey` TEXT NOT NULL)",
+        "fields": [
+          {
+            "fieldPath": "dataFileSign",
+            "columnName": "dataFileSign",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "fileType",
+            "columnName": "fileType",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "filePath",
+            "columnName": "filePath",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "dataFileId",
+            "columnName": "dataFileId",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "fileOtherInfo",
+            "columnName": "fileOtherInfo",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "foreignKey",
+            "columnName": "foreignKey",
+            "affinity": "TEXT",
+            "notNull": true
+          }
+        ],
+        "primaryKey": {
+          "columnNames": [
+            "dataFileId"
+          ],
+          "autoGenerate": true
+        },
+        "indices": [],
+        "foreignKeys": []
+      },
+      {
+        "tableName": "tb_data_file",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`dataFileSign` TEXT NOT NULL, `fileType` INTEGER NOT NULL, `filePath` TEXT NOT NULL, `dataFileId` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `fileOtherInfo` TEXT NOT NULL, `foreignKey` TEXT NOT NULL)",
+        "fields": [
+          {
+            "fieldPath": "dataFileSign",
+            "columnName": "dataFileSign",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "fileType",
+            "columnName": "fileType",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "filePath",
+            "columnName": "filePath",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "dataFileId",
+            "columnName": "dataFileId",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "fileOtherInfo",
+            "columnName": "fileOtherInfo",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "foreignKey",
+            "columnName": "foreignKey",
+            "affinity": "TEXT",
+            "notNull": true
+          }
+        ],
+        "primaryKey": {
+          "columnNames": [
+            "dataFileId"
+          ],
+          "autoGenerate": true
+        },
+        "indices": [],
+        "foreignKeys": []
+      }
+    ],
+    "views": [],
+    "setupQueries": [
+      "CREATE TABLE IF NOT EXISTS room_master_table (id INTEGER PRIMARY KEY,identity_hash TEXT)",
+      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, '761eea429526aa5fe2912635a6d571a7')"
+    ]
+  }
+}

@@ -40,6 +40,7 @@ dependencies {
     api project("path": ":component:net")
     api project("path": ":component:bus")
     api project("path": ":component:choose")
+    api project("path": ":component:db")
     kapt deps.arouter_compiler
 
     //引入刷新和Adapter

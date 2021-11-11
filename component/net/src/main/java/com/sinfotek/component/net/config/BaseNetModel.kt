@@ -22,6 +22,7 @@ open class BaseNetModel {
     fun createQueryMap(name: String, paramMap: Map<String, Any>) =
         apiRetrofit.createQueryMap(name, paramMap)
 
+
     suspend fun <T> Call<T>.await(): T {
         return suspendCoroutine { continuation ->
             enqueue(object : Callback<T> {

@@ -4,9 +4,12 @@ import android.app.Activity
 import android.app.Application
 import androidx.lifecycle.Transformations
 import androidx.lifecycle.liveData
+import androidx.lifecycle.viewModelScope
 import com.luck.picture.lib.PictureSelector
 import com.luck.picture.lib.config.PictureMimeType
 import com.sinfotek.component.choose.file.ShowImgEngine
+import com.sinfotek.component.db.DbManager
+import com.sinfotek.component.db.model.DataFileModel
 import com.sinfotek.component.net.bean.ResponseResult
 import com.sinfotek.lib.base.mvvm.binding.command.BindingAction
 import com.sinfotek.lib.base.mvvm.binding.command.BindingCommand
@@ -15,6 +18,10 @@ import com.sinfotek.lib.base.mvvm.vm.BaseViewModel
 import com.sinfotek.lib.common.log.RxLogUtil
 import com.sinfotek.lib.common.router.RxRouteUtil
 import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.MainScope
+import kotlinx.coroutines.flow.collect
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 
 /**
  *
@@ -80,6 +87,23 @@ class MainVm(activity: Activity, application: Application, model: MainModel) :
                 .videoMaxSecond(60)
                 .recordVideoSecond(59)
                 .forResult(202)
+        }
+    })
+
+    val insertFile = BindingCommand<Any>(object : BindingAction{
+        /**
+         * 调用
+         */
+        override fun call() {
+            val dataFileModel =  DataFileModel(
+                System.currentTimeMillis().toString(),
+                DataFileModel.TYPE_IMG,"xxxx"
+            )
+            launchOnIO {
+                DbManager.instance.insertDataFileModel(dataFileModel).also {
+                  value -> RxLogUtil.e(value.toString())
+                }
+            }
         }
     })
 

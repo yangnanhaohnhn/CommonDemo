@@ -9,8 +9,8 @@ package com.sinfotek.component.net.const
 object BaseUrlConst {
     private const val URL_HTTP_FLAG = "http"
 
-    private const val URL_IP_ADDRESS = ""
-    private const val URL_PORT_ADDRESS = ""
+    private const val URL_IP_ADDRESS = "118.26.64.162"
+    private const val URL_PORT_ADDRESS = "9917"
 
     /**
      * 线上

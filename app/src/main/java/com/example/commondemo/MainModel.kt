@@ -17,32 +17,6 @@ import kotlinx.coroutines.withContext
  */
 class MainModel : BaseNetModel() {
 
-//    /**
-//     * 登录用户
-//     */
-//    suspend fun login(
-//        username: String,
-//        password: String,
-//        channelId: String,
-//        callBack: AbstractResponseCallBack<LoginBean>?
-//    ) {
-//        val paramMap: MutableMap<String, Any> = HashMap(4)
-//        paramMap[RequestParam.USERNAME] = username
-//        paramMap[RequestParam.USER_PASS] = password
-//        paramMap[RequestParam.PHONE_TYPE] = "Android"
-//        paramMap[RequestParam.CHANNEL_ID] = channelId
-//
-//
-////        try {
-////            val login = create<AppService>()
-////                .login(UrlConst.APP_LOGIN_URL, createQueryMap("login", paramMap))
-////
-////            callBack!!.onResponseResultCallBack(login)
-////        } catch (e: Exception) {
-////            e.printStackTrace()
-////        }
-//    }
-
     /**
      * 登录用户
      */

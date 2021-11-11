@@ -68,9 +68,10 @@ deps.moshi_kotlin = "com.squareup.moshi:moshi-kotlin:$moshiVersion"
 deps.moshi_kotlin_codegen = "com.squareup.moshi:moshi-kotlin-codegen:$moshiVersion"
 
 // Room
-def roomVersion = '2.2.5'
+def roomVersion = '2.3.0'
 deps.room = "androidx.room:room-runtime:$roomVersion"
 deps.room_compiler = "androidx.room:room-compiler:$roomVersion"
+//将 Room 与 Flow 一起使用
 deps.room_ktx = "androidx.room:room-ktx:$roomVersion"
 
 //Toast信息

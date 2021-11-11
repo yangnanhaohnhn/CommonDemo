@@ -17,7 +17,6 @@
         android:orientation="vertical"
         tools:context=".MainActivity">
 
-
         <Button
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -41,6 +40,14 @@
             android:layout_height="wrap_content"
             android:text="选择视频"
             binding:onClickCommand="@{mainVm.chooseVideo}" />
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="插入数据"
+            binding:onClickCommand="@{mainVm.insertFile}" />
+
+
 
         <com.sinfotek.component.choose.file.ImgRecycleView
             android:id="@+id/irv_file"
