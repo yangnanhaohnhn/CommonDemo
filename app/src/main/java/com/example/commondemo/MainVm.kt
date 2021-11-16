@@ -7,6 +7,7 @@ import androidx.lifecycle.liveData
 import androidx.lifecycle.viewModelScope
 import com.luck.picture.lib.PictureSelector
 import com.luck.picture.lib.config.PictureMimeType
+import com.sinfotek.component.choose.file.FileChooseSelector
 import com.sinfotek.component.choose.file.ShowImgEngine
 import com.sinfotek.component.db.DbManager
 import com.sinfotek.component.db.model.DataFileModel
@@ -15,6 +16,7 @@ import com.sinfotek.lib.base.mvvm.binding.command.BindingAction
 import com.sinfotek.lib.base.mvvm.binding.command.BindingCommand
 import com.sinfotek.lib.base.mvvm.bus.SingleLiveEvent
 import com.sinfotek.lib.base.mvvm.vm.BaseViewModel
+import com.sinfotek.lib.common.RxFileUtil
 import com.sinfotek.lib.common.log.RxLogUtil
 import com.sinfotek.lib.common.router.RxRouteUtil
 import kotlinx.coroutines.Dispatchers
@@ -90,18 +92,28 @@ class MainVm(activity: Activity, application: Application, model: MainModel) :
         }
     })
 
-    val insertFile = BindingCommand<Any>(object : BindingAction{
+    /**
+     * 选择文件
+     */
+    val chooseFile = BindingCommand<Any>(object : BindingAction {
+        override fun call() {
+//            RxFileUtil.chooseFile(activity, "application/*", true, 10000)
+            FileChooseSelector.chooseFile(activity, arrayOf(".txt", ".pdf"))
+        }
+    })
+
+    val insertFile = BindingCommand<Any>(object : BindingAction {
         /**
          * 调用
          */
         override fun call() {
-            val dataFileModel =  DataFileModel(
+            val dataFileModel = DataFileModel(
                 System.currentTimeMillis().toString(),
-                DataFileModel.TYPE_IMG,"xxxx"
+                DataFileModel.TYPE_IMG, "xxxx"
             )
             launchOnIO {
-                DbManager.instance.insertDataFileModel(dataFileModel).also {
-                  value -> RxLogUtil.e(value.toString())
+                DbManager.instance.insertDataFileModel(dataFileModel).also { value ->
+                    RxLogUtil.e(value.toString())
                 }
             }
         }

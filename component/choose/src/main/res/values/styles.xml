@@ -10,4 +10,8 @@
     <style name="Cancel">
         <item name="android:textColor">@android:color/holo_red_dark</item>
     </style>
+
+    <style name="Custom_File_Tool_Text_Style" parent="LFileToolbarTextStyle">
+        <item name="android:textColor">@android:color/black</item>
+    </style>
 </resources>

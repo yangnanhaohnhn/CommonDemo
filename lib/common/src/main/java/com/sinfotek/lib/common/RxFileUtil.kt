@@ -1,5 +1,8 @@
 package com.sinfotek.lib.common
 
+import android.R.attr
+import android.app.Activity
+import android.content.ClipData
 import android.content.Context
 import android.content.res.AssetManager
 import android.database.Cursor
@@ -11,6 +14,14 @@ import android.text.TextUtils
 import android.util.SparseArray
 import java.io.*
 import java.util.*
+import android.content.Intent
+import android.R.attr.data
+import android.annotation.TargetApi
+import android.content.ContentUris
+import android.os.Build
+import android.os.Environment
+import android.provider.DocumentsContract
+
 
 /**
  * Create 2021/5/21
@@ -430,5 +441,53 @@ object RxFileUtil {
          * @param duration
          */
         fun onFinish(videoThumb: Bitmap?, duration: Long)
+    }
+
+    /**
+     * 选择文件
+     */
+    fun chooseFile(
+        activity: Activity,
+        type: String?,
+        isMulti: Boolean,
+        requestCode: Int
+    ) {
+        val intent = Intent(Intent.ACTION_GET_CONTENT)
+//        intent.setType("application/zip");//设置类型，我这里是任意类型，任意后缀的可以这样写。
+        intent.type = type //设置类型，我这里是任意类型，任意后缀的可以这样写。
+//        intent.type = "*/*" //设置类型，我这里是任意类型，任意后缀的可以这样写。
+        //intent.setType(“image/*”);//图片
+        //intent.setType(“audio/*”); //音频
+        //intent.setType(“video/*”); //视频
+        //intent.setType(“video/*;image/*”);//视频＋图片
+        intent.addCategory(Intent.CATEGORY_OPENABLE)
+        //多选参数
+        intent.putExtra(Intent.EXTRA_ALLOW_MULTIPLE, isMulti)
+        activity.startActivityForResult(intent, requestCode)
+    }
+
+    /**
+     * 选择文件
+     */
+    fun chooseFile(
+        activity: Activity,
+        typeList: MutableList<String>,
+        isMulti: Boolean,
+        requestCode: Int
+    ) {
+        val intent = Intent(Intent.ACTION_GET_CONTENT)
+        var result = ""
+        for (index in typeList.indices) {
+            result += if (index == typeList.size - 1) {
+                typeList[index]
+            } else {
+                typeList[index] + ";"
+            }
+        }
+        intent.type = result
+        intent.addCategory(Intent.CATEGORY_OPENABLE)
+        //多选参数
+        intent.putExtra(Intent.EXTRA_ALLOW_MULTIPLE, isMulti)
+        activity.startActivityForResult(intent, requestCode)
     }
 }

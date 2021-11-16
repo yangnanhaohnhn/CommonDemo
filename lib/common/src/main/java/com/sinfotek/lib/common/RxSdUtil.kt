@@ -61,6 +61,20 @@ object RxSdUtil {
     }
 
     /**
+     * 获取cache路径
+     *
+     * @param context
+     * @return
+     */
+    fun getDiskCachePath(context: Context): String? {
+        return if (isExistSD() || !Environment.isExternalStorageRemovable()) {
+            context.externalCacheDir!!.path
+        } else {
+            context.cacheDir.path
+        }
+    }
+
+    /**
      * /storage/sdcard/ 或者是 /storage/emulated/0/
      *
      * @return

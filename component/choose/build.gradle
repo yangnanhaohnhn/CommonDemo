@@ -12,4 +12,8 @@ dependencies {
     //AOP
     implementation deps.aspect
     implementation deps.isoparser
+
+    //引用 Tbs
+    implementation(deps.tbs)
+    implementation(deps.file_picker)
 }

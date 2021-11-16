@@ -119,4 +119,9 @@ deps.aspect = 'org.aspectj:aspectjrt:1.9.4'
 //
 deps.isoparser = 'org.mp4parser:isoparser:1.9.27'
 
+//Tbs腾讯浏览服务 - 加载文件
+deps.tbs = 'com.tencent.tbs:tbssdk:44085'
+//选择文件
+deps.file_picker = 'com.leon:lfilepickerlibrary:1.8.0'
+
 ext.deps = deps

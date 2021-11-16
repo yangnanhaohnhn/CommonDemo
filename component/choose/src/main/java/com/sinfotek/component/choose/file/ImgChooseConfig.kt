@@ -1,10 +1,6 @@
 package com.sinfotek.component.choose.file
 
 import android.app.Activity
-import android.content.Context
-import androidx.recyclerview.widget.RecyclerView
-import com.luck.picture.lib.config.PictureConfig
-import com.sinfotek.lib.common.const.BaseConst
 import java.lang.NullPointerException
 import java.lang.ref.WeakReference
 
@@ -14,7 +10,7 @@ import java.lang.ref.WeakReference
  * date: 2021/11/1
  * desc:
  */
-class FileChooseConfig private constructor(builder: Builder) {
+class ImgChooseConfig private constructor(builder: Builder) {
     init {
         spanCount = builder.spanCount
         imgCount = builder.imgCount
@@ -123,6 +119,6 @@ class FileChooseConfig private constructor(builder: Builder) {
             this.startAudioRequestCode = startAudioRequestCode
         }
 
-        open fun build(): FileChooseConfig = FileChooseConfig(this)
+        open fun build(): ImgChooseConfig = ImgChooseConfig(this)
     }
 }

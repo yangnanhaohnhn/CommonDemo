@@ -1,11 +1,9 @@
 package com.sinfotek.component.choose.file
 
-import android.annotation.SuppressLint
 import android.content.Context
 import android.content.Intent
 import android.graphics.Bitmap
 import android.util.AttributeSet
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.widget.ImageView
@@ -13,7 +11,6 @@ import android.widget.RelativeLayout
 import android.widget.TextView
 import androidx.recyclerview.widget.DefaultItemAnimator
 import androidx.recyclerview.widget.GridLayoutManager
-import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.chad.library.adapter.base.BaseQuickAdapter
 import com.chad.library.adapter.base.BaseViewHolder
@@ -23,7 +20,6 @@ import com.luck.picture.lib.config.PictureMimeType
 import com.luck.picture.lib.entity.LocalMedia
 import com.luck.picture.lib.style.PictureParameterStyle
 import com.luck.picture.lib.tools.ScreenUtils
-import com.qmuiteam.qmui.skin.QMUISkinManager
 import com.qmuiteam.qmui.widget.dialog.QMUIBottomSheet
 import com.sinfotek.component.choose.R
 import com.sinfotek.lib.common.*
@@ -112,8 +108,8 @@ class ImgRecycleView : RecyclerView, View.OnClickListener,
      * 刷新
      */
     fun refreshAdapter() {
-        if (FileChooseConfig.isCanOp) {
-            if (fileList.size >= FileChooseConfig.imgCount) {
+        if (ImgChooseConfig.isCanOp) {
+            if (fileList.size >= ImgChooseConfig.imgCount) {
                 adapter.removeAllFooterView()
             } else {
                 if (adapter.footerLayoutCount == 0) {
@@ -156,7 +152,7 @@ class ImgRecycleView : RecyclerView, View.OnClickListener,
                 }
             }
 
-            if (FileChooseConfig.isCanOp) {
+            if (ImgChooseConfig.isCanOp) {
                 tvDel.visibility = View.VISIBLE
                 helper.addOnClickListener(R.id.tv_del)
             } else {
@@ -168,7 +164,7 @@ class ImgRecycleView : RecyclerView, View.OnClickListener,
     override fun onClick(v: View?) {
         //选择对话框
         showChoosePicture { dialog, _, _, tag ->
-            RxUiUtil.checkNull(FileChooseConfig.getContext(), "Activity")
+            RxUiUtil.checkNull(ImgChooseConfig.getContext(), "Activity")
             dialog.dismiss()
             when (tag) {
                 "0" -> fromPicture()
@@ -184,33 +180,33 @@ class ImgRecycleView : RecyclerView, View.OnClickListener,
     }
 
     private fun fromVideo() {
-        PictureSelector.create(FileChooseConfig.getContext())
+        PictureSelector.create(ImgChooseConfig.getContext())
             .openGallery(PictureMimeType.ofVideo())
             .imageEngine(ShowImgEngine())
             .isPreviewVideo(true)
-            .maxVideoSelectNum(FileChooseConfig.imgCount - fileList.size)
-            .imageSpanCount(FileChooseConfig.spanCount)
-            .videoMaxSecond(FileChooseConfig.maxVideoSecond)
-            .recordVideoSecond(FileChooseConfig.maxVideoSecond - 1)
-            .forResult(FileChooseConfig.startVideoRequestCode)
+            .maxVideoSelectNum(ImgChooseConfig.imgCount - fileList.size)
+            .imageSpanCount(ImgChooseConfig.spanCount)
+            .videoMaxSecond(ImgChooseConfig.maxVideoSecond)
+            .recordVideoSecond(ImgChooseConfig.maxVideoSecond - 1)
+            .forResult(ImgChooseConfig.startVideoRequestCode)
     }
 
     private fun fromCamera() {
-        PictureSelector.create(FileChooseConfig.getContext())
+        PictureSelector.create(ImgChooseConfig.getContext())
             .openCamera(PictureMimeType.ofImage())
-            .forResult(FileChooseConfig.startCameraRequestCode)
+            .forResult(ImgChooseConfig.startCameraRequestCode)
     }
 
     private fun fromPicture() {
-        PictureSelector.create(FileChooseConfig.getContext())
+        PictureSelector.create(ImgChooseConfig.getContext())
             .openGallery(PictureMimeType.ofImage())
             .imageEngine(ShowImgEngine())
-            .maxSelectNum(FileChooseConfig.imgCount - fileList.size)
-            .imageSpanCount(FileChooseConfig.spanCount)
+            .maxSelectNum(ImgChooseConfig.imgCount - fileList.size)
+            .imageSpanCount(ImgChooseConfig.spanCount)
             .isCamera(false)
             .isCompress(false)
             .isPreviewImage(true)
-            .forResult(FileChooseConfig.startPictureRequestCode)
+            .forResult(ImgChooseConfig.startPictureRequestCode)
     }
 
     override fun onItemClick(adapter: BaseQuickAdapter<*, *>?, view: View?, position: Int) {
@@ -228,10 +224,10 @@ class ImgRecycleView : RecyclerView, View.OnClickListener,
      */
     private fun externalVideoPreview(fileModel: FileModel) {
         //查看视频
-        val intent = Intent(FileChooseConfig.getContext(), VideoExternalPreviewActivity::class.java)
+        val intent = Intent(ImgChooseConfig.getContext(), VideoExternalPreviewActivity::class.java)
         intent.putExtra(PictureConfig.EXTRA_VIDEO_PATH, fileModel.localMedia.realPath)
         intent.putExtra(PictureConfig.EXTRA_MEDIA_KEY, fileModel.localMedia)
-        FileChooseConfig.getContext().startActivity(intent)
+        ImgChooseConfig.getContext().startActivity(intent)
     }
 
     private val tmpLocalMediaList = arrayListOf<LocalMedia>()
@@ -243,7 +239,7 @@ class ImgRecycleView : RecyclerView, View.OnClickListener,
         tmpLocalMediaList.clear()
         tmpLocalMediaList.add(fileModel.localMedia)
 
-        PictureSelector.create(FileChooseConfig.getContext())
+        PictureSelector.create(ImgChooseConfig.getContext())
             .setPictureStyle(PictureParameterStyle())
             .imageEngine(ShowImgEngine())
             .openExternalPreview(0, tmpLocalMediaList)
@@ -264,13 +260,13 @@ class ImgRecycleView : RecyclerView, View.OnClickListener,
      * 显示选择文件
      */
     private fun showChoosePicture(listener: QMUIBottomSheet.BottomListSheetBuilder.OnSheetItemClickListener) {
-        val modelType = FileChooseConfig.modelType
+        val modelType = ImgChooseConfig.modelType
         val build = QMUIBottomSheet.BottomListSheetBuilder(mContext)
         build.addItem("相册选择", "0")
             .addItem("拍照", "1")
         when (modelType) {
-            FileChooseConfig.TYPE_ADD_VIDEO -> build.addItem("视频", "2")
-            FileChooseConfig.TYPE_ADD_VIDEO_AND_AUDIO -> {
+            ImgChooseConfig.TYPE_ADD_VIDEO -> build.addItem("视频", "2")
+            ImgChooseConfig.TYPE_ADD_VIDEO_AND_AUDIO -> {
                 build.addItem("视频", "2")
                     .addItem("录音", "3")
             }

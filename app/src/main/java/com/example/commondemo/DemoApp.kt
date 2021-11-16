@@ -1,10 +1,13 @@
 package com.example.commondemo
 
 import com.sinfotek.component.bus.InitBus
+import com.sinfotek.component.choose.InitChoose
 import com.sinfotek.component.db.DbContext
 import com.sinfotek.component.db.DbHelper
 import com.sinfotek.component.net.InitNet
 import com.sinfotek.lib.base.BaseApplication
+import com.sinfotek.lib.common.const.InitCommon
+import kotlin.concurrent.thread
 
 /**
  *
@@ -37,6 +40,8 @@ open class DemoApp : BaseApplication() {
         InitNet.init(this)
         DbContext.init(this)
         dbHelper = DbHelper.instance
+        InitCommon.init(this)
+        InitChoose.initTbs(this)
     }
 
     fun getDbHelper() = dbHelper

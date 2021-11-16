@@ -7,9 +7,15 @@
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
 
     <application>
+        <!--        视频查看器-->
         <activity
             android:name=".file.VideoExternalPreviewActivity"
             android:configChanges="screenSize|smallestScreenSize|screenLayout" />
+        <!--        文件查看器-->
+        <activity
+            android:name=".file.FileDisplayActivity"
+            android:configChanges="screenSize|smallestScreenSize|screenLayout" />
+
     </application>
 
 </manifest>

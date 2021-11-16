@@ -44,7 +44,8 @@ class VideoExternalPreviewActivity : PictureBaseActivity(), MediaPlayer.OnErrorL
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
-        window.addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS)
+        window.statusBarColor = Color.TRANSPARENT
+//        window.addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS)
         super.onCreate(savedInstanceState)
     }
 
@@ -53,11 +54,6 @@ class VideoExternalPreviewActivity : PictureBaseActivity(), MediaPlayer.OnErrorL
     }
 
     override fun initPictureSelectorStyle() {
-        if (PictureSelectionConfig.style != null) {
-            if (PictureSelectionConfig.style.pictureLeftBackIcon != 0) {
-                ibLeftBack!!.setImageResource(PictureSelectionConfig.style.pictureLeftBackIcon)
-            }
-        }
     }
 
     override fun initWidgets() {
@@ -191,7 +187,7 @@ class VideoExternalPreviewActivity : PictureBaseActivity(), MediaPlayer.OnErrorL
     }
 
     override fun onPrepared(mp: MediaPlayer) {
-        mp.setOnInfoListener { mp1: MediaPlayer?, what: Int, extra: Int ->
+        mp.setOnInfoListener { _: MediaPlayer?, what: Int, _: Int ->
             if (what == MediaPlayer.MEDIA_INFO_VIDEO_RENDERING_START) {
                 hideLoading()
                 // video started
