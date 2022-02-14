@@ -31,7 +31,7 @@ object RxGsonUtil {
      * 转成json
      * 解决一下转义的问题
      */
-    fun toJson2(obj: Any?): String? {
+    fun toJsonHtml(obj: Any?): String? {
         var res: String? = null
         try {
             val gson = GsonBuilder().disableHtmlEscaping().create()

@@ -168,7 +168,7 @@ class RxCoilUtil(private val context: Context) {
      * 加载Gif
      */
     fun intoGif(imageView: ImageView) {
-        RxUiUtil.checkNull(imageView, "ImageView IS Not Null")
+        checkNull(imageView, "ImageView IS Not Null")
         if (!isSetAny) {
             throw IllegalArgumentException("You must be call #load() first")
         }
@@ -187,7 +187,7 @@ class RxCoilUtil(private val context: Context) {
      * 加载Gif
      */
     fun intoGif(imageView: ImageView, filePath: String) {
-        RxUiUtil.checkNull(imageView, "ImageView IS Not Null")
+        checkNull(imageView, "ImageView IS Not Null")
         if (!isSetAny) {
             throw IllegalArgumentException("You must be call #load() first")
         }
@@ -206,7 +206,7 @@ class RxCoilUtil(private val context: Context) {
      * 加载长图片
      */
     fun intoLongImg(imageView: ImageView, target: Target) {
-        RxUiUtil.checkNull(imageView, "ImageView IS Not Null")
+        checkNull(imageView, "ImageView IS Not Null")
         if (!isSetAny) {
             throw IllegalArgumentException("You must be call #load() first")
         }

@@ -1,6 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="CompilerConfiguration">
-    <bytecodeTargetLevel target="1.8" />
+    <bytecodeTargetLevel target="1.7">
+      <module name="CommonDemo.app" target="1.8" />
+      <module name="CommonDemo.component.bus" target="1.8" />
+      <module name="CommonDemo.component.choose" target="1.8" />
+      <module name="CommonDemo.component.db" target="1.8" />
+      <module name="CommonDemo.component.net" target="1.8" />
+      <module name="CommonDemo.lib.base" target="1.8" />
+      <module name="CommonDemo.lib.common" target="1.8" />
+      <module name="CommonDemo.module.home" target="1.8" />
+    </bytecodeTargetLevel>
   </component>
 </project>

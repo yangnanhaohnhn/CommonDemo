@@ -104,6 +104,14 @@ deps.live_event_bus = "com.jeremyliao:live-event-bus-x:1.7.3"
 
 //腾讯MmKV
 deps.mmkv = "com.tencent:mmkv-static:1.2.10"
+//DataStore 非常适合简单的小型数据集，不支持部分更新或参照完整性
+def datastore_version = '1.0.0'
+//Datastore Typed
+//deps.data_store = "androidx.datastore:datastore:$datastore_version"
+//deps.data_store_core = "androidx.datastore:datastore-core:$datastore_version"
+//Datastore Preferences
+deps.datastore_preference = "androidx.datastore:datastore-preferences:$datastore_version"
+deps.datastore_preference_core = "androidx.datastore:datastore-preferences-core:$datastore_version"
 
 //BaseQuickAdapter
 deps.fresh_layout = "com.scwang.smartrefresh:SmartRefreshLayout:1.1.3"

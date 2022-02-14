@@ -5,6 +5,9 @@ import android.os.Build
 import android.os.Looper
 import android.os.Process
 import com.sinfotek.lib.common.RxAppInfoUtil
+import com.sinfotek.lib.common.getAppVersionCode
+import com.sinfotek.lib.common.getAppVersionName
+import com.sinfotek.lib.common.showToast
 import java.io.File
 import java.io.PrintWriter
 import java.io.StringWriter
@@ -114,7 +117,7 @@ class ExceptionHandler : Thread.UncaughtExceptionHandler {
         poolUtil.execute(object : Runnable {
             override fun run() {
                 Looper.prepare()
-                com.sinfotek.lib.common.RxToastUtil.showToast(application, "很抱歉,程序出现异常,即将退出.")
+                showToast(application, "很抱歉,程序出现异常,即将退出.")
                 //上传数据
                 Looper.loop()
                 poolUtil.remove(this)
@@ -185,9 +188,8 @@ class ExceptionHandler : Thread.UncaughtExceptionHandler {
             """.trimIndent()
         )
         //版本信息
-        val appVersion = RxAppInfoUtil.getAppVersion(application)
-        sbInfo.append("versionName = ").append(appVersion[0]).append("\n")
-            .append("versionCode = ").append(appVersion[1]).append("\n") //获取设备信息
+        sbInfo.append("versionName = ").append(getAppVersionName(application)).append("\n")
+            .append("versionCode = ").append(getAppVersionCode(application)).append("\n") //获取设备信息
             //sdk版本
             .append("SDK_INT = ").append(Build.VERSION.SDK_INT).append("\n") //Android版本
             .append("RELEASE = ").append(Build.VERSION.RELEASE).append("\n") //手机制造商

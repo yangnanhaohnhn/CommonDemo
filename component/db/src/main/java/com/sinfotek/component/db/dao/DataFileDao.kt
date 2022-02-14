@@ -17,8 +17,7 @@ interface DataFileDao : BaseDao<DataFileModel>{
         const val TAB_NAME = DataFileModel.TAB_NAME
     }
 
-
-    @Query("select * from $TAB_NAME")
-    fun getAllData():Flow<MutableList<DataFileModel>>
+//    @Query("select * from $TAB_NAME")
+//    suspend fun getAllData():Flow<MutableList<DataFileModel>>
 
 }

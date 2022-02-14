@@ -164,7 +164,7 @@ class ImgRecycleView : RecyclerView, View.OnClickListener,
     override fun onClick(v: View?) {
         //选择对话框
         showChoosePicture { dialog, _, _, tag ->
-            RxUiUtil.checkNull(ImgChooseConfig.getContext(), "Activity")
+            checkNull(ImgChooseConfig.getContext(), "Activity")
             dialog.dismiss()
             when (tag) {
                 "0" -> fromPicture()

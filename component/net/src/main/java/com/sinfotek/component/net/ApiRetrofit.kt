@@ -147,14 +147,9 @@ class ApiRetrofit {
             val duration = endTime - startTime
             val mediaType = response.body!!.contentType()
             val content = response.body!!.string()
-            RxLogUtil.i(
-                "response",
-                """
-                $request
-                RequestHead:${request.headers}
-                ResponseResult:$content
-                ----------End:${duration}毫秒----------
-                """.trimIndent()
+            RxLogUtil.logApi(
+                ApiConst.API_INFO,
+                "$request RequestHead:${request.headers} ResponseResult:$content --------End:${duration}毫秒----------"
             )
             return response.newBuilder()
                 .body(ResponseBody.create(mediaType, content))

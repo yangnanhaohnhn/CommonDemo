@@ -6,8 +6,8 @@ import com.sinfotek.component.net.config.NetAppContext
 import com.sinfotek.component.net.const.ApiConst
 import com.sinfotek.component.net.utils.ResponseCodeException
 import com.sinfotek.lib.common.RxGsonUtil
-import com.sinfotek.lib.common.RxToastUtil
 import com.sinfotek.lib.common.log.RxLogUtil
+import com.sinfotek.lib.common.showWarnToast
 import java.io.Serializable
 import java.lang.Exception
 import java.lang.RuntimeException
@@ -52,14 +52,14 @@ class ResponseResult constructor(
                 ApiConst.RESULT_OK -> {
                     RxLogUtil.logApi(
                         ApiConst.API_INFO,
-                        "Success： " + msgId + "--->" + RxGsonUtil.toJson2(res)
+                        "Success： " + msgId + "--->" + RxGsonUtil.toJsonHtml(res)
                     )
                     createSuccessResponse(res, msgId)
                 }
                 else -> {
                     RxLogUtil.logApi(
                         ApiConst.API_INFO,
-                        "Failure： " + msgId + "--->" + RxGsonUtil.toJson2(res)
+                        "Failure： " + msgId + "--->" + RxGsonUtil.toJsonHtml(res)
                     )
                     createFailureResponse(res, msgId)
                 }
@@ -69,7 +69,7 @@ class ResponseResult constructor(
         fun error(isShow: Boolean, exception: Exception, msgId: String): ResponseResult {
             val msg = getFailureTips(exception)
             if (isShow) {
-                RxToastUtil.showWarnToast(NetAppContext.getContext(), msg)
+                showWarnToast(NetAppContext.getContext(), msg)
             }
             RxLogUtil.logApi(
                 ApiConst.API_INFO,

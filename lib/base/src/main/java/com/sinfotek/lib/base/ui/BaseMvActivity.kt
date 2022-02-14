@@ -72,9 +72,7 @@ abstract class BaseMvActivity<B : ViewDataBinding, VM : BaseViewModel<*>> : Base
      *
      * @return
      */
-    protected open fun onBindViewModel(): Class<VM> {
-        return BaseViewModel::class.java as Class<VM>
-    }
+    protected open fun onBindViewModel(): Class<VM> = BaseViewModel::class.java as Class<VM>
 
     override fun getLayoutId(): Int {
         return onBindLayoutId()

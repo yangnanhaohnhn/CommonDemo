@@ -11,6 +11,7 @@ import java.util.*
  * @author N
  * desc:
  */
+
 object RxDateUtil {
     const val TYPE_YMD = "yyyy-MM-dd"
     const val TYPE_YMD_HMS = "yyyy-MM-dd HH:mm:ss"
@@ -20,11 +21,11 @@ object RxDateUtil {
         return SimpleDateFormat(type, Locale.CHINA)
     }
 
-    fun getDateByLong(time: Long, type: String): String {
+    fun getDateByLong(time: Long, type: String = TYPE_YMD_HMS): String {
         return getCommonDate(type).format(Date(time))
     }
 
-    fun getDateByDate(date: Date, type: String): String {
+    fun getDateByDate(date: Date, type: String = TYPE_YMD_HMS): String {
         return getCommonDate(type).format(date)
     }
 
@@ -104,12 +105,12 @@ object RxDateUtil {
         //开始时间只需要小于结束时间， 开始时间不能大于当前时间
         if (endTime != 0L) {
             if (startTime > endTime) {
-                RxToastUtil.showWarnToast(context!!, "开始时间不能大于结束时间！")
+                showWarnToast(context!!, "开始时间不能大于结束时间！")
                 return false
             }
         }
         if (startTime > System.currentTimeMillis()) {
-            RxToastUtil.showWarnToast(context!!, "开始时间不能大于当前时间！")
+            showWarnToast(context!!, "开始时间不能大于当前时间！")
             return false
         }
         return true
@@ -126,7 +127,7 @@ object RxDateUtil {
         //结束时间不能大于开始时间
         if (startTime != 0L) {
             if (startTime > endTime) {
-                RxToastUtil.showWarnToast(context!!, "结束时间不能小于开始时间！")
+                showWarnToast(context!!, "结束时间不能小于开始时间！")
                 return false
             }
         }

@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:binding="http://schemas.android.com/apk/res-auto">
+
+    <data>
+        <variable
+            name="publicTitleBar"
+            type="com.sinfotek.lib.base.widget.PublicTitleBarBean" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/bar_height"
+        android:background="@color/app_theme"
+        android:orientation="vertical">
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:paddingStart="10dp"
+            android:paddingEnd="15dp"
+            android:src="@mipmap/ic_white_back"
+            android:visibility="@{publicTitleBar.leftImgVisibility}"
+            app:layout_constraintStart_toStartOf="parent"
+            binding:onClickCommand="@{publicTitleBar.leftListener}" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:text="@{publicTitleBar.title}"
+            android:textColor="@android:color/white"
+            android:textSize="18sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:paddingStart="10dp"
+            android:paddingEnd="10dp"
+            android:visibility="@{publicTitleBar.midImgVisibility}"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/iv_edit"
+            binding:imageRes="@{publicTitleBar.midImgResource}"
+            binding:onClickCommand="@{publicTitleBar.midListener}" />
+
+        <ImageView
+            android:id="@+id/iv_edit"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:paddingStart="15dp"
+            android:paddingEnd="10dp"
+            android:visibility="@{publicTitleBar.rightImgVisibility}"
+            app:layout_constraintEnd_toEndOf="parent"
+            binding:imageRes="@{publicTitleBar.rightImgResource}"
+            binding:onClickCommand="@{publicTitleBar.rightListener}" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:paddingStart="15dp"
+            android:paddingEnd="10dp"
+            android:text="@={publicTitleBar.rightText}"
+            android:textColor="@android:color/white"
+            android:textSize="16sp"
+            android:visibility="@{publicTitleBar.rightTextVisibility}"
+            app:layout_constraintEnd_toEndOf="parent"
+            binding:onClickCommand="@{publicTitleBar.rightTextListener}" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

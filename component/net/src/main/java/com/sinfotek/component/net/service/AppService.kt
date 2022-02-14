@@ -1,6 +1,7 @@
 package com.sinfotek.component.net.service
 
 import com.sinfotek.component.net.bean.LoginBean
+import kotlinx.coroutines.flow.Flow
 import retrofit2.Call
 import retrofit2.http.GET
 import retrofit2.http.QueryMap
@@ -24,4 +25,8 @@ interface AppService {
     @JvmSuppressWildcards
     @GET
     fun login(@Url url: String, @QueryMap body: Map<String, Any>): Call<LoginBean>
+
+    @JvmSuppressWildcards
+    @GET
+    fun login2(@Url url: String, @QueryMap body: Map<String, Any>): Flow<LoginBean>
 }

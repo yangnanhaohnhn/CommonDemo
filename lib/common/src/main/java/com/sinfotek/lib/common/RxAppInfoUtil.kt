@@ -1,13 +1,11 @@
 package com.sinfotek.lib.common
 
-import android.app.Activity
 import android.app.ActivityManager
 import android.content.Context
 import android.content.pm.PackageManager
 import android.os.Environment
 import android.os.Process
 import android.os.StatFs
-import android.util.DisplayMetrics
 import java.text.DecimalFormat
 
 /**
@@ -58,24 +56,24 @@ object RxAppInfoUtil {
     }
 
 
-    /**
-     * 获取软件版本信息
-     *
-     * @param context
-     * @return
-     */
-    fun getAppVersion(context: Context): MutableList<Any> {
-        val msg = arrayListOf<Any>(2)
-        val manager = context.packageManager
-        try {
-            val info = manager.getPackageInfo(context.packageName, PackageManager.GET_ACTIVITIES)
-            msg.add(if (info.versionName == null) "" else info.versionName)
-            msg.add(info.versionCode)
-        } catch (e: PackageManager.NameNotFoundException) {
-            e.printStackTrace()
-        }
-        return msg
-    }
+//    /**
+//     * 获取软件版本信息
+//     *
+//     * @param context
+//     * @return
+//     */
+//    fun getAppVersion(context: Context): MutableList<Any> {
+//        val msg = arrayListOf<Any>(2)
+//        val manager = context.packageManager
+//        try {
+//            val info = manager.getPackageInfo(context.packageName, PackageManager.GET_ACTIVITIES)
+//            msg.add(if (info.versionName == null) "" else info.versionName)
+//            msg.add(info.versionCode)
+//        } catch (e: PackageManager.NameNotFoundException) {
+//            e.printStackTrace()
+//        }
+//        return msg
+//    }
 
     /**
      * 获取应用虚拟机能获取使用的最大内存
@@ -155,20 +153,5 @@ object RxAppInfoUtil {
         return null
     }
 
-//    /**
-//     * 获取屏幕长度
-//     */
-//    fun getScreenWidth(context: Context): Int {
-//        val localDisplayMetrics = DisplayMetrics()
-//        (context as Activity).windowManager.defaultDisplay.getMetrics(localDisplayMetrics)
-//        return localDisplayMetrics.widthPixels
-//    }
-//    /**
-//     * 获取屏幕高度
-//     */
-//    fun getScreenHeight(context: Context): Int {
-//        val localDisplayMetrics = DisplayMetrics()
-//        (context as Activity).windowManager.defaultDisplay.getMetrics(localDisplayMetrics)
-//        return localDisplayMetrics.heightPixels
-//    }
+
 }

@@ -41,4 +41,17 @@ class MainModel : BaseNetModel() {
             login.await()
         }
     }
+
+    suspend fun login2(
+        username: String,
+        password: String,
+        channelId: String
+    ) = withContext(Dispatchers.IO){
+        val paramMap: MutableMap<String, Any> = HashMap(4)
+        paramMap[RequestParam.USERNAME] = username
+        paramMap[RequestParam.USER_PASS] = password
+        paramMap[RequestParam.PHONE_TYPE] = "Android"
+        paramMap[RequestParam.CHANNEL_ID] = channelId
+        create<AppService>().login2(UrlConst.APP_LOGIN_URL, createQueryMap("login", paramMap))
+    }
 }

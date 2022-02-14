@@ -18,7 +18,7 @@ import com.sinfotek.lib.base.mvvm.bus.SingleLiveEvent
 import com.sinfotek.lib.base.mvvm.vm.BaseViewModel
 import com.sinfotek.lib.common.RxFileUtil
 import com.sinfotek.lib.common.log.RxLogUtil
-import com.sinfotek.lib.common.router.RxRouteUtil
+import com.sinfotek.lib.common.router.startToActivity
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.MainScope
 import kotlinx.coroutines.flow.collect
@@ -98,7 +98,8 @@ class MainVm(activity: Activity, application: Application, model: MainModel) :
     val chooseFile = BindingCommand<Any>(object : BindingAction {
         override fun call() {
 //            RxFileUtil.chooseFile(activity, "application/*", true, 10000)
-            FileChooseSelector.chooseFile(activity, arrayOf(".txt", ".pdf"))
+//            FileChooseSelector.chooseFile(activity, arrayOf(".txt", ".pdf"))
+            FileChooseSelector.chooseFile(activity, requestCode = 100)
         }
     })
 
@@ -119,14 +120,15 @@ class MainVm(activity: Activity, application: Application, model: MainModel) :
         }
     })
 
-    val startActivityOp = BindingCommand<Any>(object : BindingAction {
-        /**
-         * 调用
-         */
-        override fun call() {
-            RxRouteUtil.startToActivity("")
-        }
-    })
+//    val startActivityOp = BindingCommand<Any>(object : BindingAction {
+//        /**
+//         * 调用
+//         */
+//        override fun call() {
+//
+//
+//        }
+//    })
 
     val loginLiveData = Transformations.switchMap(requestData) {
         showLoading("loading....")

@@ -43,7 +43,4 @@ dependencies {
     api project("path": ":component:db")
     kapt deps.arouter_compiler
 
-    //引入刷新和Adapter
-//    implementation deps.base_recycler
-    implementation deps.fresh_layout
 }

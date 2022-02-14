@@ -18,4 +18,8 @@ dependencies {
     api deps.lifecycle_runtime
 //    api deps.lifecycle_fragment
 
+
+    //引入刷新和Adapter
+    implementation deps.base_recycler
+    implementation deps.fresh_layout
 }

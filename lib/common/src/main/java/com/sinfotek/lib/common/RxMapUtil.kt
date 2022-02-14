@@ -83,21 +83,21 @@ object RxMapUtil {
         if (0 == type) {
             //检测设备是否安装百度地图APP
             if (!haveExistPackageName(mContext, GD_PACKAGE_NAME)) {
-                RxToastUtil.showToast(mContext, "高德地图未安装!")
+                showToast(mContext, "高德地图未安装!")
                 return
             }
             openGdMapToGuide(mContext, lat, lgt, storeName, mode)
         } else if (1 == type) {
             //检测设备是否安装百度地图APP
             if (!haveExistPackageName(mContext, BD_PACKAGE_NAME)) {
-                RxToastUtil.showToast(mContext, "百度地图未安装!")
+                showToast(mContext, "百度地图未安装!")
                 return
             }
             openBdMapToGuide(mContext, lat, lgt, storeName, mode)
         } else {
             //检测都未安装时，跳转网页版高德地图
             if (!haveExistPackageName(mContext, TENCENT_PACKAGE_NAME)) {
-                RxToastUtil.showToast(mContext, "腾讯地图未安装!")
+                showToast(mContext, "腾讯地图未安装!")
                 return
             }
             openTencentToGuide(mContext, lat, lgt, storeName, mode)
