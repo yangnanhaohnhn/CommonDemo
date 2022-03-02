@@ -74,21 +74,18 @@ class ImgRecycleView : RecyclerView, View.OnClickListener,
     /**
      * 设置长度
      */
-    fun setWidth(dpVal: Float): ImgRecycleView {
+    fun setWidth(dpVal: Float) = apply {
         imgWidth = (screenWidth - ScreenUtils.dip2px(mContext, dpVal)) / 3
         val ivImg = footView.findViewById<ImageView>(R.id.iv_img)
         ivImg.layoutParams = RelativeLayout.LayoutParams(imgWidth, imgWidth)
-        return this@ImgRecycleView
     }
 
-    fun addPicture(imgPath: FileModel): ImgRecycleView {
+    fun addPicture(imgPath: FileModel) = apply {
         fileList.add(imgPath)
-        return this@ImgRecycleView
     }
 
-    fun addPicture(imgList: MutableList<FileModel>): ImgRecycleView {
+    fun addPicture(imgList: MutableList<FileModel>) = apply {
         fileList.addAll(imgList)
-        return this@ImgRecycleView
     }
 
     fun addVideo(fileModel: FileModel) {

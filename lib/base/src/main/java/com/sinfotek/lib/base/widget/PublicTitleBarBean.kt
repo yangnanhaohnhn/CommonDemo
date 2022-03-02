@@ -2,7 +2,7 @@ package com.sinfotek.lib.base.widget
 
 import android.view.View
 import androidx.databinding.BaseObservable
-import com.sinfotek.lib.base.mvvm.binding.command.BindingCommand
+import com.sinfotek.lib.base.mvvm.binding.command.BindingActionCommand
 import java.io.Serializable
 
 /**
@@ -18,26 +18,29 @@ class PublicTitleBarBean : BaseObservable(), Serializable {
             notifyChange()
         }
 
-    var leftImgVisibility = View.VISIBLE
+    var leftImgVisibility = true
         set(value) {
             field = value
             notifyChange()
         }
-    var leftListener: BindingCommand<*>? = null
+
+    var leftListener: BindingActionCommand? = null
         set(value) {
             field = value
             notifyChange()
         }
-    var midListener: BindingCommand<*>? = null
+
+    var midListener: BindingActionCommand? = null
         set(value) {
             field = value
             notifyChange()
         }
-    var midImgVisibility = View.GONE
+    var midImgVisibility = false
         set(value) {
             field = value
             notifyChange()
         }
+
     var midImgResource: Int = 0
         set(value) {
             field = value
@@ -47,7 +50,7 @@ class PublicTitleBarBean : BaseObservable(), Serializable {
     /**
      * 默认不显示
      */
-    var rightImgVisibility = View.GONE
+    var rightImgVisibility = false
         set(value) {
             field = value
             notifyChange()
@@ -57,18 +60,18 @@ class PublicTitleBarBean : BaseObservable(), Serializable {
             field = value
             notifyChange()
         }
-    var rightListener: BindingCommand<*>? = null
+    var rightListener: BindingActionCommand? = null
         set(value) {
             field = value
             notifyChange()
         }
 
-    var rightTextVisibility = View.GONE
+    var rightTextVisibility = false
         set(value) {
             field = value
             notifyChange()
         }
-    var rightTextListener: BindingCommand<*>? = null
+    var rightTextListener: BindingActionCommand? = null
         set(value) {
             field = value
             notifyChange()

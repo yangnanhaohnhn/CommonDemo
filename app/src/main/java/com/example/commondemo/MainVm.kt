@@ -4,7 +4,6 @@ import android.app.Activity
 import android.app.Application
 import androidx.lifecycle.Transformations
 import androidx.lifecycle.liveData
-import androidx.lifecycle.viewModelScope
 import com.luck.picture.lib.PictureSelector
 import com.luck.picture.lib.config.PictureMimeType
 import com.sinfotek.component.choose.file.FileChooseSelector
@@ -13,17 +12,10 @@ import com.sinfotek.component.db.DbManager
 import com.sinfotek.component.db.model.DataFileModel
 import com.sinfotek.component.net.bean.ResponseResult
 import com.sinfotek.lib.base.mvvm.binding.command.BindingAction
-import com.sinfotek.lib.base.mvvm.binding.command.BindingCommand
+import com.sinfotek.lib.base.mvvm.binding.command.BindingActionCommand
 import com.sinfotek.lib.base.mvvm.bus.SingleLiveEvent
 import com.sinfotek.lib.base.mvvm.vm.BaseViewModel
-import com.sinfotek.lib.common.RxFileUtil
 import com.sinfotek.lib.common.log.RxLogUtil
-import com.sinfotek.lib.common.router.startToActivity
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.MainScope
-import kotlinx.coroutines.flow.collect
-import kotlinx.coroutines.launch
-import kotlinx.coroutines.withContext
 
 /**
  *
@@ -36,7 +28,7 @@ class MainVm(activity: Activity, application: Application, model: MainModel) :
 
     private var requestData = SingleLiveEvent<RequestParam>()
 
-    val loginOp = BindingCommand<Any>(object : BindingAction {
+    val loginOp = BindingActionCommand(object : BindingAction {
         /**
          * 调用
          */
@@ -62,7 +54,7 @@ class MainVm(activity: Activity, application: Application, model: MainModel) :
     /**
      * 选择图片
      */
-    val chooseImg = BindingCommand<Any>(object : BindingAction {
+    val chooseImg = BindingActionCommand(object : BindingAction {
         override fun call() {
 
             PictureSelector.create(activity)
@@ -77,7 +69,7 @@ class MainVm(activity: Activity, application: Application, model: MainModel) :
     /**
      * 选择图片
      */
-    val chooseVideo = BindingCommand<Any>(object : BindingAction {
+    val chooseVideo = BindingActionCommand(object : BindingAction {
         override fun call() {
             PictureSelector.create(activity)
                 .openGallery(PictureMimeType.ofVideo())
@@ -95,7 +87,7 @@ class MainVm(activity: Activity, application: Application, model: MainModel) :
     /**
      * 选择文件
      */
-    val chooseFile = BindingCommand<Any>(object : BindingAction {
+    val chooseFile = BindingActionCommand(object : BindingAction {
         override fun call() {
 //            RxFileUtil.chooseFile(activity, "application/*", true, 10000)
 //            FileChooseSelector.chooseFile(activity, arrayOf(".txt", ".pdf"))
@@ -103,7 +95,7 @@ class MainVm(activity: Activity, application: Application, model: MainModel) :
         }
     })
 
-    val insertFile = BindingCommand<Any>(object : BindingAction {
+    val insertFile = BindingActionCommand(object : BindingAction {
         /**
          * 调用
          */
@@ -119,16 +111,6 @@ class MainVm(activity: Activity, application: Application, model: MainModel) :
             }
         }
     })
-
-//    val startActivityOp = BindingCommand<Any>(object : BindingAction {
-//        /**
-//         * 调用
-//         */
-//        override fun call() {
-//
-//
-//        }
-//    })
 
     val loginLiveData = Transformations.switchMap(requestData) {
         showLoading("loading....")

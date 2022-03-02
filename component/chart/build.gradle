@@ -1,0 +1,9 @@
+apply plugin: 'com.android.library'
+apply from: "../../lib.build.gradle"
+
+android {
+}
+
+dependencies {
+    api(deps.chart)
+}

@@ -35,8 +35,6 @@ open class BaseApplication : MultiDexApplication() {
         }
     }
 
-
-
     override fun onTerminate() {
         super.onTerminate()
         //注销路由

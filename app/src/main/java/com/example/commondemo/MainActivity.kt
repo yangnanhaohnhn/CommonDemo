@@ -25,10 +25,7 @@ import com.sinfotek.module.home.HomeActivity
 
 class MainActivity : BaseMvActivity<ActivityMainBinding, MainVm>() {
     private lateinit var toolbar: Toolbar
-    override fun onBindLayoutId(): Int {
-        return R.layout.activity_main
-    }
-
+    override fun onBindLayoutId() = R.layout.activity_main
     override fun initView(savedInstanceState: Bundle?) {
         super.initView(savedInstanceState)
 
@@ -94,41 +91,38 @@ class MainActivity : BaseMvActivity<ActivityMainBinding, MainVm>() {
         RxCoilUtil(this).load(R.mipmap.ic_launcher).into(mBinding.iv5)
 
         mBinding.btnStartActivity.setOnClickListener {
-            registerForActivityResult(ActivityResultContracts.StartActivityForResult()){data->
-                if (data == null){
-                    return@registerForActivityResult
-                }
-                val code = data.resultCode
-                val resCode = data.data?.getIntExtra("code",-1)
-                RxLogUtil.e("$code $resCode")
-            }.launch(Intent(this, HomeActivity::class.java))
+//            registerForActivityResult(ActivityResultContracts.StartActivityForResult()){data->
+//                if (data == null){
+//                    return@registerForActivityResult
+//                }
+//                val code = data.resultCode
+//                val resCode = data.data?.getIntExtra("code",-1)
+//                RxLogUtil.e("$code $resCode")
+//            }.launch(Intent(this, HomeActivity::class.java))
+            startActivity(Intent(this, HomeActivity::class.java))
         }
     }
 
-    override fun onBindViewModel(): Class<MainVm> {
-        return MainVm::class.java
-    }
+    override fun onBindViewModel() = MainVm::class.java
 
-    override fun getMvvmImpl(): CommonMvMethodListener {
-        return object : CommonMvMethodImpl() {
-            override fun onBindViewModelFactory(): ViewModelProvider.AndroidViewModelFactory? {
-                return AppViewModelFactory(application).activity(this@MainActivity)
-            }
+    override fun getMvvmImpl() = object : CommonMvMethodImpl() {
+        override fun onBindViewModelFactory(): ViewModelProvider.AndroidViewModelFactory {
+            return AppViewModelFactory(application, this@MainActivity)
+        }
 
-            override fun onBindVariableId(): Int {
-                return BR.mainVm
-            }
+        override fun onBindVariableId(): Int {
+            return BR.mainVm
+        }
 
-            override fun initViewObservable() {
-                super.initViewObservable()
+        override fun initViewObservable() {
+            super.initViewObservable()
 //                mViewModel.uc.responseLiveEvent.observe(this@MainActivity, {
 //                    RxLogUtil.d(it!!.toString())
 //                })
 
-                mViewModel.loginLiveData.observe(this@MainActivity, Observer {
-                    RxLogUtil.d(it.toString())
-                })
-            }
+            mViewModel.loginLiveData.observe(this@MainActivity, Observer {
+                RxLogUtil.d(it.toString())
+            })
         }
     }
 

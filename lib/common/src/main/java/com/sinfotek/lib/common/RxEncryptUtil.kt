@@ -274,8 +274,7 @@ object RxEncryptUtil {
     @Throws(UnsupportedEncodingException::class)
     private fun decodePrivate(str: String): ByteArray {
         val sb = StringBuffer()
-        var data: ByteArray? = null
-        data = str.toByteArray(charset("US-ASCII"))
+        val data: ByteArray = str.toByteArray(charset("US-ASCII"))
         val len = data.size
         var i = 0
         var b1: Int

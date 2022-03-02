@@ -114,7 +114,7 @@ object RxFileUtil {
      * @param filePath
      * @return true:存在
      */
-    fun isExistFile(filePath: String?): Boolean {
+    fun isExistFile(filePath: String): Boolean {
         return if (TextUtils.isEmpty(filePath)) {
             false
         } else isExistFile(File(filePath))
@@ -126,8 +126,8 @@ object RxFileUtil {
      * @param file
      * @return
      */
-    fun isExistFile(file: File?): Boolean {
-        return file?.exists() ?: false
+    fun isExistFile(file: File): Boolean {
+        return file.exists()
     }
 
     /**
@@ -423,13 +423,9 @@ object RxFileUtil {
         override fun run() {
             val map: SparseArray<Any> = getVideoThumb(path)
             val object1: Any = map.get(0)
-            if (object1 != null) {
-                val videoThumb: Bitmap = object1 as Bitmap
-                val videoDuration = map.get(1) as Long
-                listener?.onFinish(videoThumb, videoDuration)
-            } else {
-                listener?.onFinish(null, 0)
-            }
+            val videoThumb: Bitmap = object1 as Bitmap
+            val videoDuration = map.get(1) as Long
+            listener?.onFinish(videoThumb, videoDuration)
         }
     }
 

@@ -132,4 +132,7 @@ deps.tbs = 'com.tencent.tbs:tbssdk:44085'
 //选择文件
 deps.file_picker = 'com.leon:lfilepickerlibrary:1.8.0'
 
+//MPAndroidChart
+deps.chart = 'com.github.PhilJay:MPAndroidChart:v3.1.0'
+
 ext.deps = deps

@@ -41,6 +41,7 @@ dependencies {
     api project("path": ":component:bus")
     api project("path": ":component:choose")
     api project("path": ":component:db")
+    api project("path": ":component:chart")
     kapt deps.arouter_compiler
 
 }

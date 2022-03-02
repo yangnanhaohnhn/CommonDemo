@@ -8,6 +8,8 @@ import com.alibaba.android.arouter.launcher.ARouter
 import com.sinfotek.lib.base.listener.CommonMvMethodImpl
 import com.sinfotek.lib.base.listener.CommonMvMethodListener
 import com.sinfotek.lib.base.mvvm.vm.BaseViewModel
+import com.sinfotek.lib.common.RxUiUtil
+import com.sinfotek.lib.common.isEmpty
 
 /**
  *
@@ -15,7 +17,7 @@ import com.sinfotek.lib.base.mvvm.vm.BaseViewModel
  * date: 2021/10/8
  * desc:
  */
-abstract class BaseMvActivity<B : ViewDataBinding, VM : BaseViewModel<*>> : BaseActivity(){
+abstract class BaseMvActivity<B : ViewDataBinding, VM : BaseViewModel<*>> : BaseActivity() {
     private lateinit var mvImpl: CommonMvMethodListener
     protected open lateinit var mBinding: B
     protected open lateinit var mViewModel: VM
@@ -72,15 +74,11 @@ abstract class BaseMvActivity<B : ViewDataBinding, VM : BaseViewModel<*>> : Base
      *
      * @return
      */
-    protected open fun onBindViewModel(): Class<VM> = BaseViewModel::class.java as Class<VM>
+    protected open fun onBindViewModel() = BaseViewModel::class.java as Class<VM>
 
-    override fun getLayoutId(): Int {
-        return onBindLayoutId()
-    }
+    override fun getLayoutId() = onBindLayoutId()
 
-    protected open fun getMvvmImpl(): CommonMvMethodListener {
-        return CommonMvMethodImpl()
-    }
+    protected open fun getMvvmImpl() =  CommonMvMethodImpl()
 
     abstract fun onBindLayoutId(): Int
 

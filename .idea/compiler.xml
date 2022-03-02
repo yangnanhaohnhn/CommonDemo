@@ -4,6 +4,7 @@
     <bytecodeTargetLevel target="1.7">
       <module name="CommonDemo.app" target="1.8" />
       <module name="CommonDemo.component.bus" target="1.8" />
+      <module name="CommonDemo.component.chart" target="1.8" />
       <module name="CommonDemo.component.choose" target="1.8" />
       <module name="CommonDemo.component.db" target="1.8" />
       <module name="CommonDemo.component.net" target="1.8" />

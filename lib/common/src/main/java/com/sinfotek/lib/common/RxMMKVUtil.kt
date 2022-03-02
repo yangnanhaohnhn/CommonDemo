@@ -35,51 +35,61 @@ object RxMMKVUtil {
         else mv.removeValueForKey(key)
     }
 
-    fun putBoolean(key: String?, defaultValue: Boolean): Boolean {
+    fun putValue(key: String, defaultValue: Any?) {
+//        mv.encode(key, defaultValue)
+        when (defaultValue) {
+            is String -> putString(key, defaultValue)
+            is Boolean -> putBoolean(key, defaultValue)
+            is Int -> putInt(key, defaultValue)
+            is Long -> putLong(key, defaultValue)
+        }
+    }
+
+    fun putBoolean(key: String, defaultValue: Boolean): Boolean {
         return mv.encode(key, defaultValue)
     }
 
-    fun putInt(key: String?, defaultValue: Int): Boolean {
+    fun putInt(key: String, defaultValue: Int): Boolean {
         return mv.encode(key, defaultValue)
     }
 
-    fun putLong(key: String?, defaultValue: Long): Boolean {
+    fun putLong(key: String, defaultValue: Long): Boolean {
         return mv.encode(key, defaultValue)
     }
 
-    fun putString(key: String?, defaultValue: String?): Boolean {
+    fun putString(key: String, defaultValue: String?): Boolean {
         return mv.encode(key, defaultValue)
     }
 
-    fun getBoolean(key: String?): Boolean {
+    fun getBoolean(key: String): Boolean {
         return getBoolean(key, false)
     }
 
-    fun getBoolean(key: String?, defaultValue: Boolean): Boolean {
+    fun getBoolean(key: String, defaultValue: Boolean): Boolean {
         return mv.decodeBool(key, defaultValue)
     }
 
-    fun getInt(key: String?): Int {
+    fun getInt(key: String): Int {
         return getInt(key, -1)
     }
 
-    fun getInt(key: String?, defaultValue: Int): Int {
+    fun getInt(key: String, defaultValue: Int): Int {
         return mv.decodeInt(key, defaultValue)
     }
 
-    fun getLong(key: String?): Long {
+    fun getLong(key: String): Long {
         return getLong(key, -1L)
     }
 
-    fun getLong(key: String?, defaultValue: Long): Long {
+    fun getLong(key: String, defaultValue: Long): Long {
         return mv.decodeLong(key, defaultValue)
     }
 
-    fun getString(key: String?): String? {
+    fun getString(key: String): String? {
         return getString(key, "")
     }
 
-    fun getString(key: String?, defaultValue: String?): String? {
+    fun getString(key: String, defaultValue: String?): String? {
         return mv.decodeString(key, defaultValue)
     }
 }

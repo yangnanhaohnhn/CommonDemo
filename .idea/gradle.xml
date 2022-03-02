@@ -14,6 +14,7 @@
             <option value="$PROJECT_DIR$/app" />
             <option value="$PROJECT_DIR$/component" />
             <option value="$PROJECT_DIR$/component/bus" />
+            <option value="$PROJECT_DIR$/component/chart" />
             <option value="$PROJECT_DIR$/component/choose" />
             <option value="$PROJECT_DIR$/component/db" />
             <option value="$PROJECT_DIR$/component/net" />

@@ -80,13 +80,6 @@ class ApiRetrofit {
      * create you ApiService
      * Create an implementation of the API endpoints defined by the `service` interface.
      */
-//    fun <T> create(service: Class<T>?): T {
-//        if (service == null) {
-//            throw RuntimeException("Api service is null!")
-//        }
-//        return retrofit.create(service)
-//    }
-
     fun <S> create(serviceClass: Class<S>): S = retrofit.create(serviceClass)
 
 //    inline fun <reified T> create(): T = create(T::class.java)

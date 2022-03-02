@@ -53,7 +53,7 @@ object RxMapUtil {
     private fun haveExistPackageName(mContext: Context, packageName: String): Boolean {
         val packageInfoList: List<PackageInfo> = mContext.packageManager.getInstalledPackages(0)
         val resList: MutableList<String> = ArrayList()
-        if (packageInfoList != null && packageInfoList.isNotEmpty()) {
+        if (packageInfoList.isNotEmpty()) {
             for (packageInfo in packageInfoList) {
                 resList.add(packageInfo.packageName)
             }

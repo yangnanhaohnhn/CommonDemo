@@ -21,7 +21,6 @@ open class BaseViewModel<M>(application: Application) : AndroidViewModel(applica
         UiChangeLiveData()
     }
 
-
     inner class UiChangeLiveData<T> : SingleLiveEvent<T>() {
         val showLoadingEvent: SingleLiveEvent<String> by lazy {
             SingleLiveEvent()
@@ -40,11 +39,11 @@ open class BaseViewModel<M>(application: Application) : AndroidViewModel(applica
 
     /**
      * 显示loading
-     *
+     * setValue()只能在主线程中调用，postValue()可以在任何线程中调用。
      * @param msg
      */
     protected open fun showLoading(msg: String) {
-        uc.showLoadingEvent.postValue(msg)
+        uc.showLoadingEvent.value = msg
     }
 
     /**

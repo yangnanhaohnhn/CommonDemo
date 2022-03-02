@@ -44,23 +44,4 @@ object FileChooseSelector {
             .withMaxNum(maxNum)
             .start()
     }
-
-
-//    fun chooseFile(
-//        activity: Activity,
-//        isMulti: Boolean,
-//        maxNum: Int,
-//        array: Array<String>?,
-//        requestCode: Int
-//    ) {
-//        LFilePicker()
-//            .withActivity(activity)
-//            .withMutilyMode(isMulti)
-////            .withTitle("选择文件")
-//            .withFileFilter(array)
-//            .withTitleStyle(R.style.Custom_File_Tool_Text_Style)
-//            .withRequestCode(requestCode)
-//            .withMaxNum(maxNum)
-//            .start()
-//    }
 }

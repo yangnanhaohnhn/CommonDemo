@@ -4,6 +4,7 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="..\:/data/company/other_project/CommonDemo/app/src/main/res/layout/activity_main.xml" value="0.27760416666666665" />
+        <entry key="..\:/data/company/other_project/CommonDemo/component/chart/src/main/res/layout/marker_chart_layout.xml" value="0.37135416666666665" />
         <entry key="..\:/data/company/other_project/CommonDemo/component/choose/src/main/res/layout/activity_file_display.xml" value="0.33" />
         <entry key="..\:/data/company/other_project/CommonDemo/component/choose/src/main/res/layout/item_img.xml" value="0.5" />
         <entry key="..\:/data/company/other_project/CommonDemo/component/choose/src/main/res/layout/picture_activity_video_play.xml" value="0.20425724637681159" />
@@ -20,5 +21,12 @@
   </component>
   <component name="ProjectType">
     <option name="id" value="Android" />
+  </component>
+  <component name="SuppressABINotification">
+    <option name="modulesWithSuppressedNotConfigured">
+      <set>
+        <option value="CommonDemo.lib2" />
+      </set>
+    </option>
   </component>
 </project>

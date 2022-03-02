@@ -1,5 +1,6 @@
 package com.example.lib2;
 
+import java.awt.Color;
 import java.util.Arrays;
 
 /**
@@ -8,10 +9,15 @@ import java.util.Arrays;
 public class MyClass {
     public static void main(String[] args) {
         int[] num = {1, 2, 3, 4, 5, 6, 7, 1};
-        long start = System.currentTimeMillis();
-        System.out.println("Start----------" + start);
-        System.out.println(containsDuplicate(num));
-        System.out.println("End  ----------" + System.currentTimeMillis());
+//        long start = System.currentTimeMillis();
+//        System.out.println("Start----------" + start);
+//        System.out.println(containsDuplicate(num));
+//        System.out.println("End  ----------" + System.currentTimeMillis());
+
+        for (int i = 0; i < 7; i++) {
+            System.out.println(num[i % num.length]);
+        }
+        System.out.println(Math.random() * 255);
     }
 
     /**

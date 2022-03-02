@@ -15,13 +15,6 @@ import androidx.lifecycle.ViewModelProvider
 open class BaseAppVmFactory(val application: Application) :
     ViewModelProvider.AndroidViewModelFactory(application) {
 
-    lateinit var activity: FragmentActivity
-
-    protected fun setActivity(activity: FragmentActivity): BaseAppVmFactory {
-        this.activity = activity
-        return this
-    }
-
     override fun <T : ViewModel?> create(modelClass: Class<T>): T {
         throw IllegalArgumentException("Unknown ViewModel class: " + modelClass.name)
     }
