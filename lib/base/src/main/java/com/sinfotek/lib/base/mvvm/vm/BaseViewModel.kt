@@ -15,7 +15,7 @@ import kotlinx.coroutines.flow.flowOn
  * date: 2021/10/8
  * desc:
  */
-open class BaseViewModel<M>(application: Application) : AndroidViewModel(application), IBaseViewModel {
+open class BaseViewModel(application: Application) : AndroidViewModel(application), IBaseViewModel {
 
     val uc: UiChangeLiveData<Any> by lazy {
         UiChangeLiveData()
@@ -43,7 +43,7 @@ open class BaseViewModel<M>(application: Application) : AndroidViewModel(applica
      * @param msg
      */
     protected open fun showLoading(msg: String) {
-        uc.showLoadingEvent.value = msg
+        uc.showLoadingEvent.postValue(msg)
     }
 
     /**

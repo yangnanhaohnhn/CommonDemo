@@ -26,7 +26,7 @@ import com.sinfotek.module.home.databinding.ActivityHomeBinding
 class HomeActivity : BaseMvActivity<ActivityHomeBinding, HomeVm>() {
     override fun onBindLayoutId() = R.layout.activity_home
 
-    override fun onBindViewModel()= HomeVm::class.java
+    override fun onBindViewModel() = HomeVm::class.java
 
     override fun getMvvmImpl() = object : CommonMvMethodImpl() {
         override fun onBindViewModelFactory(): ViewModelProvider.AndroidViewModelFactory {

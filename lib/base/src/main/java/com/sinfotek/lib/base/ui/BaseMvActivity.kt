@@ -17,16 +17,16 @@ import com.sinfotek.lib.common.isEmpty
  * date: 2021/10/8
  * desc:
  */
-abstract class BaseMvActivity<B : ViewDataBinding, VM : BaseViewModel<*>> : BaseActivity() {
+abstract class BaseMvActivity<B : ViewDataBinding, VM : BaseViewModel> : BaseActivity() {
     private lateinit var mvImpl: CommonMvMethodListener
-    protected open lateinit var mBinding: B
+    protected open lateinit var mBinding : B
     protected open lateinit var mViewModel: VM
 
     override fun initView(savedInstanceState: Bundle?) {
         //注入ARouter
         ARouter.getInstance().inject(this)
         mvImpl = getMvvmImpl()
-        //私有的初始化Databinding和ViewModel方法
+        //私有的初始化DataBinding和ViewModel方法
         initViewDataBinding()
         //私有的ViewModel与View的契约事件回调逻辑
         registerUiChangeLiveDataCallBack()
@@ -74,11 +74,11 @@ abstract class BaseMvActivity<B : ViewDataBinding, VM : BaseViewModel<*>> : Base
      *
      * @return
      */
-    protected open fun onBindViewModel() = BaseViewModel::class.java as Class<VM>
+    protected open fun onBindViewModel(): Class<VM> = BaseViewModel::class.java as Class<VM>
 
     override fun getLayoutId() = onBindLayoutId()
 
-    protected open fun getMvvmImpl() =  CommonMvMethodImpl()
+    protected open fun getMvvmImpl() = CommonMvMethodImpl()
 
     abstract fun onBindLayoutId(): Int
 

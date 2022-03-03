@@ -23,8 +23,7 @@ import com.sinfotek.lib.common.log.RxLogUtil
  * date: 2021/10/26
  * desc:
  */
-class MainVm(activity: Activity, application: Application, model: MainModel) :
-    BaseViewModel<MainModel>(application) {
+class MainVm(activity: Activity, application: Application, model: MainModel) : BaseViewModel(application) {
 
     private var requestData = SingleLiveEvent<RequestParam>()
 

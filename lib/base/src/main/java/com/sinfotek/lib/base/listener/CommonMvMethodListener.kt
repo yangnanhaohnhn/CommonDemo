@@ -11,7 +11,7 @@ import androidx.lifecycle.ViewModelProvider
 interface CommonMvMethodListener {
 
     /**
-     * BR.viewmodel或者0
+     * BR.viewModel或者0
      * @return
      */
     fun onBindVariableId(): Int

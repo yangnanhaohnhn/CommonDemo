@@ -16,8 +16,7 @@ import com.sinfotek.lib.common.showToast
  * date: 2022/3/2
  * desc:
  */
-class HomeVm(activity: Activity, application: Application, model: BaseModel) :
-    BaseViewModel<BaseModel>(application) {
+class HomeVm(activity: Activity, application: Application, model: BaseModel) : BaseViewModel(application) {
     val registerInfo = ObservableField(0)
     val registerOp = BindingConsumerCommand(object : BindingConsumer<Any> {
         /**

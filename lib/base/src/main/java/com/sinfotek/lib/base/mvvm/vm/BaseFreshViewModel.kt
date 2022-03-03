@@ -9,7 +9,7 @@ import com.sinfotek.lib.base.mvvm.bus.SingleLiveEvent
  * date: 2021/11/26
  * desc:
  */
-open class BaseFreshViewModel<M>(application: Application) : BaseViewModel<M>(application) {
+open class BaseFreshViewModel(application: Application) : BaseViewModel(application) {
 
     var mUiChangeFreshLiveData = UiChangeFreshLiveData()
 
