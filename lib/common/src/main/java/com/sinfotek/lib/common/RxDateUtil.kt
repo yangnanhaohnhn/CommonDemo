@@ -101,16 +101,16 @@ object RxDateUtil {
      * @param endTime
      * @return true : 通过
      */
-    fun isPassStartTime(context: Context?, startTime: Long, endTime: Long): Boolean {
+    fun isPassStartTime(context: Context, startTime: Long, endTime: Long): Boolean {
         //开始时间只需要小于结束时间， 开始时间不能大于当前时间
         if (endTime != 0L) {
             if (startTime > endTime) {
-                showWarnToast(context!!, "开始时间不能大于结束时间！")
+                showWarnToast(context, "开始时间不能大于结束时间！")
                 return false
             }
         }
         if (startTime > System.currentTimeMillis()) {
-            showWarnToast(context!!, "开始时间不能大于当前时间！")
+            showWarnToast(context, "开始时间不能大于当前时间！")
             return false
         }
         return true
@@ -123,11 +123,11 @@ object RxDateUtil {
      * @param endTime
      * @return true : 通过
      */
-    fun isPassEndTime(context: Context?, startTime: Long, endTime: Long): Boolean {
+    fun isPassEndTime(context: Context, startTime: Long, endTime: Long): Boolean {
         //结束时间不能大于开始时间
         if (startTime != 0L) {
             if (startTime > endTime) {
-                showWarnToast(context!!, "结束时间不能小于开始时间！")
+                showWarnToast(context, "结束时间不能小于开始时间！")
                 return false
             }
         }
@@ -139,8 +139,7 @@ object RxDateUtil {
      *
      * @return
      */
-    val oneDayTime: Long
-        get() = getOneDayTime(System.currentTimeMillis())
+    val oneDayTime  = getOneDayTime(System.currentTimeMillis())
 
     /**
      * 获取昨天的时间
@@ -171,8 +170,7 @@ object RxDateUtil {
      *
      * @return
      */
-    val threeDayTime: Long
-        get() = getThreeDayTime(System.currentTimeMillis())
+    val threeDayTime =  getThreeDayTime(System.currentTimeMillis())
 
     /**
      * 获取七天前的时间
@@ -191,8 +189,7 @@ object RxDateUtil {
      *
      * @return
      */
-    val sevenDayTime: Long
-        get() = getSevenDayTime(System.currentTimeMillis())
+    val sevenDayTime = getSevenDayTime(System.currentTimeMillis())
 
     @JvmStatic
     fun main(args: Array<String>) {

@@ -39,32 +39,28 @@ class RxCoilUtil(private val context: Context) {
     }
 
 
-    fun load(any: Any): RxCoilUtil {
+    fun load(any: Any) = apply {
         this.any = any
         isSetAny = true
-        return this
     }
 
     /**
      * 设置淡出的时间
      */
-    fun crossFadeMillis(millis: Int): RxCoilUtil {
+    fun crossFadeMillis(millis: Int)= apply {
         this.crossFadeMillis = millis
-        return this
     }
 
-    fun setScaleType(scaleType: ImageView.ScaleType): RxCoilUtil {
+    fun setScaleType(scaleType: ImageView.ScaleType)= apply {
         this.scaleType = scaleType
-        return this
     }
 
     /**
      * 设置变换类型：
      * 模糊变换、圆形变换、灰度变换和圆角变换：
      */
-    fun transformation(transformation: Transformation?): RxCoilUtil {
+    fun transformation(transformation: Transformation?)= apply {
         this.transformation = transformation
-        return this
     }
 
     /**

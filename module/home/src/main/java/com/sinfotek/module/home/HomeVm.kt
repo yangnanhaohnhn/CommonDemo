@@ -32,4 +32,5 @@ class HomeVm(activity: Activity, application: Application, model: BaseModel) : B
             showToast(activity, registerInfo.get().toString())
         }
     })
+
 }

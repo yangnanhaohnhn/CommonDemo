@@ -16,6 +16,7 @@ import com.sinfotek.lib.base.mvvm.binding.command.BindingActionCommand
 import com.sinfotek.lib.base.mvvm.bus.SingleLiveEvent
 import com.sinfotek.lib.base.mvvm.vm.BaseViewModel
 import com.sinfotek.lib.common.log.RxLogUtil
+import com.sinfotek.lib.common.router.startToActivity
 
 /**
  *
@@ -80,6 +81,12 @@ class MainVm(activity: Activity, application: Application, model: MainModel) : B
                 .videoMaxSecond(60)
                 .recordVideoSecond(59)
                 .forResult(202)
+        }
+    })
+
+    val startPaging = BindingActionCommand(object : BindingAction{
+        override fun call() {
+            startToActivity(RouteResConst.PAGING_PATH)
         }
     })
 

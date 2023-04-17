@@ -2,11 +2,11 @@ package com.sinfotek.lib.common
 
 import android.app.ActivityManager
 import android.content.Context
-import android.content.pm.PackageManager
 import android.os.Environment
 import android.os.Process
 import android.os.StatFs
 import java.text.DecimalFormat
+import com.sinfotek.lib.common.RxSdUtil
 
 /**
  *
@@ -109,9 +109,9 @@ object RxAppInfoUtil {
      * @return
      */
     fun getSdTotalSize(): String? {
-        if (!RxSdUtil.isExistSD()) {
-            return null
-        }
+//        if (!RxSdUtil.isExistSD){
+//            return null
+//        }
         val file = Environment.getExternalStorageDirectory()
         val statFs = StatFs(file.path)
         val blockSize = statFs.blockSizeLong
@@ -125,9 +125,9 @@ object RxAppInfoUtil {
      * @return
      */
     fun getSdAvailableSize(): String? {
-        if (!RxSdUtil.isExistSD()) {
-            return null
-        }
+//        if (!RxSdUtil.isExistSD) {
+//            return null
+//        }
         val file = Environment.getExternalStorageDirectory()
         val statFs = StatFs(file.path)
         val blockSize = statFs.blockSizeLong

@@ -3,10 +3,12 @@ package com.sinfotek.lib.common
 import android.app.Activity
 import android.content.Context
 import android.content.pm.PackageManager
+import android.text.Editable
 import android.text.TextUtils
 import android.util.DisplayMetrics
 import android.view.View
 import android.widget.Button
+import android.widget.EditText
 import android.widget.TextView
 import androidx.activity.result.ActivityResultCallback
 import androidx.activity.result.contract.ActivityResultContracts
@@ -110,6 +112,7 @@ fun getStatusBarHeight(context: Context): Int {
     }
     return if (result == 0) 25f.dp2px(context) else result
 }
+
 
 ///**
 // * 请求权限

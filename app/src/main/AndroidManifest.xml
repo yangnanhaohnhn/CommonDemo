@@ -32,6 +32,7 @@
             </intent-filter>
         </activity>
         <activity android:name="com.sinfotek.module.home.HomeActivity"/>
+        <activity android:name=".Paging3Activity"/>
     </application>
 
 </manifest>

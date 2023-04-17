@@ -4,7 +4,6 @@ import android.Manifest
 import android.app.Activity
 import android.content.Intent
 import android.os.Bundle
-import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.widget.Toolbar
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
@@ -13,8 +12,7 @@ import com.luck.picture.lib.PictureSelector
 import com.sinfotek.component.choose.file.FileChooseSelector
 import com.sinfotek.component.choose.file.FileModel
 import com.sinfotek.component.choose.file.ImgChooseConfig
-import com.sinfotek.lib.base.listener.CommonMvMethodImpl
-import com.sinfotek.lib.base.listener.CommonMvMethodListener
+import com.sinfotek.lib.base.listener.*
 import com.sinfotek.lib.base.ui.BaseMvActivity
 import com.sinfotek.lib.common.RxCoilUtil
 import com.sinfotek.lib.common.isEmptyList
@@ -100,6 +98,39 @@ class MainActivity : BaseMvActivity<ActivityMainBinding, MainVm>() {
 //                RxLogUtil.e("$code $resCode")
 //            }.launch(Intent(this, HomeActivity::class.java))
             startActivity(Intent(this, HomeActivity::class.java))
+        }
+
+//        mBinding.etContent.addTextChangedListenerDsl {
+//            beforeTextChanged { charSequence, i, i2, i3 ->
+//
+//            }
+//            afterTextChanged { }
+//            onTextChanged { charSequence, i, i2, i3 ->
+//            }
+//        }
+        mBinding.etContent.addTextChangedListenerClosure(
+            afterTextChanged = {
+                RxLogUtil.e("afterTextChanged：$it")
+            },
+            beforeTextChanged = { s, start, count, after ->
+                RxLogUtil.e("beforeTextChanged：$s,$start,$count,$after")
+            },
+            onTextChanged = { s, start, count, after ->
+                RxLogUtil.e("onTextChanged：$s,$start,$count,$after")
+            },
+        )
+
+        mBinding.etContent.addTextChangedListener {
+            beforeTextChanged { charSequence, i, i2, i3 ->
+
+            }
+            afterTextChanged {
+
+            }
+
+            onTextChanged { charSequence, i, i2, i3 ->
+
+            }
         }
     }
 

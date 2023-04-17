@@ -2,7 +2,6 @@ package com.sinfotek.component.choose.file
 
 import android.app.Activity
 import android.content.Intent
-import android.database.DatabaseUtils
 import android.graphics.PixelFormat
 import android.net.Uri
 import android.os.Bundle

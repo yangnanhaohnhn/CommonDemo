@@ -7,11 +7,10 @@ import java.io.File
 /**
  *
  * @author Y&N
- * date: 2021/10/8
+ * date: 2022/3/7
  * desc:
  */
-object RxSdUtil {
-
+open class RxSdUtil {
     /**
      * /data
      *
@@ -26,7 +25,7 @@ object RxSdUtil {
      *
      * @return
      */
-    fun getFileDir(context: Context): File? {
+    fun getFileDir(context: Context): File {
         return context.filesDir
     }
 
@@ -67,7 +66,7 @@ object RxSdUtil {
      * @return
      */
     fun getDiskCachePath(context: Context): String? {
-        return if (isExistSD() || !Environment.isExternalStorageRemovable()) {
+        return if (isExistSD || !Environment.isExternalStorageRemovable()) {
             context.externalCacheDir!!.path
         } else {
             context.cacheDir.path
@@ -108,7 +107,5 @@ object RxSdUtil {
      *
      * @return
      */
-    fun isExistSD(): Boolean {
-        return Environment.getExternalStorageState() == Environment.MEDIA_MOUNTED
-    }
+    var isExistSD = Environment.getExternalStorageState() == Environment.MEDIA_MOUNTED
 }

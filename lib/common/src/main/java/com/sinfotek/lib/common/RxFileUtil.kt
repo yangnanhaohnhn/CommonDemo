@@ -56,11 +56,11 @@ object RxFileUtil {
      * @param destFile
      * @param assetFileName
      */
-    fun readAsset(context: Context, destFile: File?, assetFileName: String?) {
+    fun readAsset(context: Context, destFile: File, assetFileName: String) {
         var inputStream: InputStream? = null
         var fos: FileOutputStream? = null
         try {
-            inputStream = context.resources.assets.open(assetFileName!!)
+            inputStream = context.resources.assets.open(assetFileName)
             fos = FileOutputStream(destFile)
             val buf = ByteArray(1024 * 8)
             var len = 0
@@ -90,14 +90,14 @@ object RxFileUtil {
      * @param context
      * @return
      */
-    fun getJsonFile(context: Context, fileName: String?): String {
+    fun getJsonFile(context: Context, fileName: String): String {
         //将json数据变成字符串
         val sb = StringBuilder()
         try {
             //获取Asset资源管理器
             val am: AssetManager = context.assets
             //通过管理器打开文件并读取
-            val br = BufferedReader(InputStreamReader(am.open(fileName!!)))
+            val br = BufferedReader(InputStreamReader(am.open(fileName)))
             var line: String?
             while (br.readLine().also { line = it } != null) {
                 sb.append(line)
@@ -183,7 +183,7 @@ object RxFileUtil {
      * @param resList
      * @param filterName 可以为 ""/.shp
      */
-    fun scanFile(file: File, resList: MutableList<String?>, filterName: String?) {
+    fun scanFile(file: File, resList: MutableList<String>, filterName: String) {
         val files = file.listFiles()
         if (files == null || files.isEmpty()) {
             return
@@ -195,7 +195,7 @@ object RxFileUtil {
                 if (TextUtils.isEmpty(filterName)) {
                     resList.add(item.path)
                 } else {
-                    if (item.name.endsWith(filterName!!)) {
+                    if (item.name.endsWith(filterName)) {
                         resList.add(item.path)
                     }
                 }
@@ -236,22 +236,19 @@ object RxFileUtil {
      * @param destFile
      * @param fileName
      */
-    fun writeDataToFile(data: String?, destFile: File?, fileName: String?) {
-        var fileName = fileName
+    fun writeDataToFile(data: String?, destFile: File, fileName: String) {
         if (TextUtils.isEmpty(data)) {
-            return
-        }
-        if (destFile == null) {
             return
         }
         if (!destFile.exists()) {
             return
         }
+        var tmpFileFileName = fileName
         if (TextUtils.isEmpty(fileName)) {
             val date = RxDateUtil.getDateByLong(System.currentTimeMillis(), RxDateUtil.TYPE_YMD_HMS)
-            fileName = "default-$date.txt"
+            tmpFileFileName = "$fileName default-$date.txt"
         }
-        val file = File(destFile, fileName)
+        val file = File(destFile, tmpFileFileName)
         var fw: FileWriter? = null
         try {
             fw = FileWriter(file)

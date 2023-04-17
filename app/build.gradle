@@ -28,4 +28,9 @@ dependencies {
     }
     //引入ARouter
     kapt deps.arouter_compiler
+
+    //引入Paging3
+    def paging_version = "3.1.0"
+    implementation "androidx.paging:paging-runtime:$paging_version"
+    testImplementation "androidx.paging:paging-common:$paging_version"
 }

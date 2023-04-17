@@ -1,7 +1,6 @@
 package com.sinfotek.lib.common
 
 import android.content.Context
-import android.widget.Button
 import es.dmoral.toasty.Toasty
 
 /**

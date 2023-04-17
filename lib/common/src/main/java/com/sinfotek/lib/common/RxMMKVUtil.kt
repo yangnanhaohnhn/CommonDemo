@@ -1,6 +1,7 @@
 package com.sinfotek.lib.common
 
 import android.content.Context
+import android.os.Parcelable
 import com.tencent.mmkv.MMKV
 
 /**
@@ -12,9 +13,8 @@ import com.tencent.mmkv.MMKV
 object RxMMKVUtil {
     private const val mvName = "mmkv_name"
 
-    private val mv: MMKV
-        ///data/user/0/packageName/files/mmkv
-        get() = MMKV.mmkvWithID(mvName)
+    ///data/user/0/packageName/files/mmkv
+    private val mv = MMKV.mmkvWithID(mvName)
 
     fun init(context: Context) {
         MMKV.initialize(context)
@@ -35,61 +35,29 @@ object RxMMKVUtil {
         else mv.removeValueForKey(key)
     }
 
-    fun putValue(key: String, defaultValue: Any?) {
-//        mv.encode(key, defaultValue)
+    fun putValue(key: String, defaultValue: Any? = null) {
         when (defaultValue) {
-            is String -> putString(key, defaultValue)
-            is Boolean -> putBoolean(key, defaultValue)
-            is Int -> putInt(key, defaultValue)
-            is Long -> putLong(key, defaultValue)
+            is String -> mv.encode(key, defaultValue)
+            is Boolean -> mv.encode(key, defaultValue)
+            is Int -> mv.encode(key, defaultValue)
+            is Long -> mv.encode(key, defaultValue)
+            is Float -> mv.encode(key, defaultValue)
+            is Double -> mv.encode(key, defaultValue)
+            is Parcelable -> mv.encode(key, defaultValue)
+            is ByteArray -> mv.encode(key, defaultValue)
         }
     }
 
-    fun putBoolean(key: String, defaultValue: Boolean): Boolean {
-        return mv.encode(key, defaultValue)
-    }
-
-    fun putInt(key: String, defaultValue: Int): Boolean {
-        return mv.encode(key, defaultValue)
-    }
-
-    fun putLong(key: String, defaultValue: Long): Boolean {
-        return mv.encode(key, defaultValue)
-    }
-
-    fun putString(key: String, defaultValue: String?): Boolean {
-        return mv.encode(key, defaultValue)
-    }
-
-    fun getBoolean(key: String): Boolean {
-        return getBoolean(key, false)
-    }
-
-    fun getBoolean(key: String, defaultValue: Boolean): Boolean {
-        return mv.decodeBool(key, defaultValue)
-    }
-
-    fun getInt(key: String): Int {
-        return getInt(key, -1)
-    }
-
-    fun getInt(key: String, defaultValue: Int): Int {
-        return mv.decodeInt(key, defaultValue)
-    }
-
-    fun getLong(key: String): Long {
-        return getLong(key, -1L)
-    }
-
-    fun getLong(key: String, defaultValue: Long): Long {
-        return mv.decodeLong(key, defaultValue)
-    }
-
-    fun getString(key: String): String? {
-        return getString(key, "")
-    }
-
-    fun getString(key: String, defaultValue: String?): String? {
-        return mv.decodeString(key, defaultValue)
+    fun getValue(key: String, defaultValue: Any?): Any? {
+        return when (defaultValue) {
+            is String -> mv.decodeString(key, defaultValue)
+            is Boolean -> mv.decodeBool(key, defaultValue)
+            is Int -> mv.decodeInt(key, defaultValue)
+            is Long -> mv.decodeLong(key, defaultValue)
+            is Float -> mv.decodeFloat(key, defaultValue)
+            is Double -> mv.decodeDouble(key, defaultValue)
+            is ByteArray -> mv.decodeBytes(key, defaultValue)
+            else -> {}
+        }
     }
 }

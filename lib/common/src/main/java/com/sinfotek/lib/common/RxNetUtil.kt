@@ -18,11 +18,8 @@ object RxNetUtil {
      * @return true:有网
      */
     fun isNetworkAvailable(context: Context): Boolean {
-        val cm = getConnectivityManager(context) as ConnectivityManager?
+        val cm = getConnectivityManager(context) as ConnectivityManager? ?: return false
         // 获取手机所有连接管理对象（包括对wi-fi,net等连接的管理）
-        if (cm == null) {
-            return false
-        }
         if (Build.VERSION.SDK_INT >= 23) {
             //获取网络属性
             val networkCapabilities = cm.getNetworkCapabilities(cm.activeNetwork);
